@@ -18,6 +18,8 @@ const Spreadsheet = () => {
   const [dragging, setDragging] = useState(null);
   const [selectedColumn, setSelectedColumn] = useState(null);
   const [selectedCell, setSelectedCell] = useState({ row: null, col: null });
+  const [searchResult, setSearchResult] = useState("");
+  const [searchInput, setSearchInput] = useState("");
 
   useEffect(() => {
     const savedSheets = JSON.parse(localStorage.getItem("sheets")) || [
@@ -255,10 +257,31 @@ const Spreadsheet = () => {
     setData(newData);
   };
   
+  const handleSearchChange = (event) => {
+    setSearchInput(event.target.value);
+  };
 
+  const handleSearchSubmit = (event) => {
+    if (event.key === "Enter") {
+      const value = searchInput;
+      if (value.startsWith("=")) {
+        const result = evaluateFormula(value, data);
+        setSearchInput(result); // Replace input with the evaluated result
+      }
+    }
+  };
   return (
     <div className="spreadsheet">
       <h1>Google Sheets Clone</h1>
+      <div className="search-bar">
+        <input
+          type="text"
+          value={searchInput}
+          onChange={handleSearchChange}
+          onKeyDown={handleSearchSubmit}
+          placeholder="Enter formula or text e.g  =SUM(A1:A2)"
+        />
+      </div>
       <div className="toolbar">
         <button onClick={addSheet}>+ Add Sheet</button>
         <button onClick={addRow}>+ Row</button>
