@@ -1,0 +1,271 @@
+/* Google Sheets Exact Replica Styling */
+
+.spreadsheet {
+  font-family: "Arial", sans-serif;
+  max-width: 100%;
+  overflow-x: auto;
+  padding: 12px;
+  background: #f9f9f9;
+  border-radius: 0;
+  box-sizing: border-box;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  background: #f1f3f4;
+  border-bottom: 1px solid #d1d1d1;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin-bottom: 8px;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.toolbar button {
+  background: #ffffff;
+  color: #5f6368;
+  border: 1px solid #dadce0;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+
+.toolbar button:hover {
+  background: #f8f9fa;
+}
+
+.sheet-container {
+  display: flex;
+  align-items: center;
+  padding: 6px;
+  width: 100%;
+  background: #f1f3f4;
+  border-top: 1px solid #d1d1d1;
+}
+
+.sheet-tab {
+  padding: 8px 12px;
+  border-radius: 3px;
+  font-size: 13px;
+  color: #202124;
+  background: #ffffff;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  margin-right: 6px;
+  border: 1px solid #d1d1d1;
+}
+
+.sheet-tab.active {
+  background: #e8f0fe;
+  border: 1px solid #1a73e8;
+}
+
+.sheet-tab:hover {
+  background: #f1f3f4;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  box-shadow: none;
+}
+
+th {
+  background: #f1f3f4;
+  padding: 6px;
+  font-weight: bold;
+  text-align: center;
+  border-bottom: 1px solid #dadce0;
+  color: #202124;
+  user-select: none;
+}
+
+.row-header {
+  background: #f1f3f4;
+  font-weight: bold;
+  text-align: center;
+  color: #5f6368;
+  width: 40px;
+  border-right: 1px solid #dadce0;
+}
+
+td {
+  border: 1px solid #dadce0;
+  padding: 0;
+  text-align: left;
+  width: 100px;
+  height: 22px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+td:hover {
+  background: #e8f0fe;
+}
+
+input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  padding: 4px;
+  font-size: 13px;
+  text-align: left;
+  background: transparent;
+  outline: none;
+  box-sizing: border-box;
+}
+
+input:focus {
+  background: #e8f0fe;
+  border: 1px solid #1a73e8;
+}
+
+@media screen and (max-width: 768px) {
+  .toolbar {
+    padding: 6px;
+  }
+  .toolbar button {
+    font-size: 12px;
+  }
+  .sheet-tab {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+  table {
+    font-size: 12px;
+  }
+  td {
+    height: 20px;
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .toolbar {
+    flex-direction: column;
+  }
+  .toolbar button {
+    font-size: 11px;
+    padding: 4px 8px;
+  }
+}
+.popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 400px;
+  background: white;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -55%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.popup-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.popup input {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  outline: none;
+  transition: border 0.3s;
+}
+
+.popup input:focus {
+  border-color: #007bff;
+}
+
+.popup button {
+  width: 100%;
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 12px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background 0.3s;
+}
+
+.popup button:hover {
+  background: #0056b3;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  cursor: pointer;
+  font-size: 20px;
+  color: #333;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.close-btn:hover {
+  color: red;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .popup {
+    width: 95%;
+    max-width: 350px;
+    padding: 15px;
+  }
+
+  .popup h3 {
+    font-size: 1.3rem;
+  }
+
+  .popup input,
+  .popup button {
+    padding: 10px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .popup {
+    width: 98%;
+    max-width: 320px;
+    padding: 12px;
+  }
+
+  .popup h3 {
+    font-size: 1.2rem;
+  }
+
+  .popup input,
+  .popup button {
+    padding: 10px;
+    font-size: 14px;
+  }
+}
+
+
