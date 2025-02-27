@@ -59,7 +59,7 @@ The **Google Sheets Clone** is a fully functional web-based spreadsheet applicat
 ### Setup Instructions
 1. Clone the repository:
    ```sh
-   git clone https://github.com/your-username/google-sheets-clone.git
+   git clone https://github.com/Aniket021978/google-sheet-Clone.git
    ```
 2. Navigate to the project directory:
    ```sh
